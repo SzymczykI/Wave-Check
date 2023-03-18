@@ -7,7 +7,7 @@ CORS(app)
 
 ds = xr.open_dataset('waves_2019-01-01.nc')
 
-@app.route('/data', methods=['POST'])
+@app.route('/hmax', methods=['POST'])
 def get_data():
     # Getting the coordinates of the selected point from the request
     lat = request.json['lat']
