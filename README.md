@@ -1,7 +1,5 @@
 # Wave-Check - interactive map
 
-> Live demo [_here_]().
-
 ## Table of Contents
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
@@ -42,18 +40,19 @@ Project is: _in progress_
 To run the app, follow these steps:
 1. Clone the repository to your local machine.
 
-2. Install the required dependencies by running
- ### npm install 
- in the frontend directory (client) and 
- ### pip install 
- in the backend directory (flask-server).
+2. Install the required dependencies in the frontend directory (client) by running:
+ ### `npm install`
+  
+  and in the backend directory (flask-server):
+ ### `pip install` 
+ 
 
 3. Start the backend server: export the FLASK_APP variable and invoke flask run in the backend directory.
- ### export FLASK_APP=server.py
- ### flask run
+ ### `export FLASK_APP=server.py`
+ ### `flask run`
  
 4. Start the frontend development server in the frontend directory by running
- ### npm start 
+ ### `npm start` 
 
 5. Open the application in your web browser by navigating to http://localhost:3000.
 
