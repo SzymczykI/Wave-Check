@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchData } from "../utils/dataFetcher";
-import Map, { NavigationControl } from "react-map-gl";
+import Map, { Marker, NavigationControl } from "react-map-gl";
 
 interface Coordinates {
   lon: number;
@@ -15,13 +15,15 @@ const InteractiveMap = () => {
     latitude: 20,
     zoom: 2,
   });
-  const [maxWaveHeight, setMaxWaveHeight] = useState(0);
+  const [maxWaveHeight, setMaxWaveHeight] = useState<number | null>(null);
   const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
 
   useEffect(() => {
     if (coordinates) {
       fetchData(coordinates.lat, coordinates.lon)
-        .then((res) => setMaxWaveHeight(res))
+        .then((res) =>
+          res ? setMaxWaveHeight(res.toFixed(2)) : setMaxWaveHeight(null)
+        )
         .catch((err) => console.log(err));
     }
   }, [coordinates]);
@@ -32,8 +34,6 @@ const InteractiveMap = () => {
       lat: event.lngLat.lat,
     });
   };
-
-  console.log(maxWaveHeight);
 
   return (
     <Map
@@ -46,10 +46,19 @@ const InteractiveMap = () => {
       }}
       onMove={(next) => setViewport(next.viewState)}
       style={{ width: "100vw", height: "100vh" }}
-      mapStyle="mapbox://styles/mapbox/streets-v9"
+      mapStyle="mapbox://styles/mapbox/outdoors-v12"
       onClick={clickOnMapHandler}
     >
       <NavigationControl />
+      {coordinates && maxWaveHeight && (
+        <>
+          <Marker latitude={coordinates.lat} longitude={coordinates.lon}>
+            <div className="px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm dark:bg-gray-700">
+              <p>{maxWaveHeight}m</p>
+            </div>
+          </Marker>
+        </>
+      )}
     </Map>
   );
 };
