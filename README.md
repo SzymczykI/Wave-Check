@@ -42,19 +42,17 @@ To run the app, follow these steps:
 
 2. Install the required dependencies in the frontend directory (client) by running:
  ### `npm install`
-  
-  and in the backend directory (flask-server):
- ### `pip install` 
- 
 
-3. Start the backend server: export the FLASK_APP variable and invoke flask run in the backend directory.
+3. In the frontend directory create .env file with MAPBOX access token (REACT_APP_MAPBOX_ACCESS_TOKEN)
+
+4. Start the backend server: export the FLASK_APP variable and invoke flask run in the backend directory.
  ### `export FLASK_APP=server.py`
  ### `flask run`
  
-4. Start the frontend development server in the frontend directory by running
+5. Start the frontend development server in the frontend directory by running
  ### `npm start` 
 
-5. Open the application in your web browser by navigating to http://localhost:3000.
+6. Open the application in your web browser by navigating to http://localhost:3000.
 
 ## Room for improvement
 - supporting data since 1979 -> displaying max wave height since then
