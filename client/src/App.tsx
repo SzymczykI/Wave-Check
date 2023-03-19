@@ -1,9 +1,9 @@
-import Map from "./components/Map";
+import InteractiveMap from "./components/InteractiveMap";
 
 function App() {
   return (
     <>
-      <Map/>
+      <InteractiveMap/>
     </>
   );
 }
