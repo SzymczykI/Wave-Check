@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchData } from "../utils/dataFetcher";
 import Map, { Marker, NavigationControl } from "react-map-gl";
-
-interface Coordinates {
-  lon: number;
-  lat: number;
-}
+import { Coordinates } from "../types";
 
 const InteractiveMap = () => {
   const token = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
@@ -52,9 +48,14 @@ const InteractiveMap = () => {
       <NavigationControl />
       {coordinates && maxWaveHeight && (
         <>
-          <Marker latitude={coordinates.lat} longitude={coordinates.lon}>
-            <div className="px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm dark:bg-gray-700">
+          <Marker
+            latitude={coordinates.lat}
+            longitude={coordinates.lon}
+            anchor="bottom"
+          >
+            <div className="px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm">
               <p>{maxWaveHeight}m</p>
+              <div className="ml-4 tooltip-arrow" data-popper-arrow></div>
             </div>
           </Marker>
         </>
