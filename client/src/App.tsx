@@ -1,9 +1,11 @@
+import InfoBox from "./components/InfoBox";
 import InteractiveMap from "./components/InteractiveMap";
 
 function App() {
   return (
     <>
-      <InteractiveMap/>
+      <InfoBox />
+      <InteractiveMap />
     </>
   );
 }
